@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#152318" />
+    <title>RA — Greenwashing</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="css/ra.css?v=4" />
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image.prod.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+  </head>
+  <body>
+    <a-scene
+      id="raScene"
+      embedded
+      renderer="colorManagement: true, alpha: true"
+      xr-mode-ui="enabled: true"
+      device-orientation-permission-ui="enabled: false"
+      mindar-image="imageTargetSrc: assets/targets/cartilha.mind?v=5; autoStart: true; maxTrack: 3; uiLoading: no; uiScanning: no; uiError: no"
+    >
+      <a-assets>
+        <video id="video-curto" src="assets/video/desmascarando-greenwashing.mp4" loop playsinline crossorigin="anonymous"></video>
+        <video id="video-longo" src="assets/video/greenwashing-nos-bastidores-da-moda.mp4" loop playsinline crossorigin="anonymous"></video>
+        <audio id="audio-desc" src="assets/audio/audiodescricao.mp3" preload="auto"></audio>
+        <img id="frog-img" src="assets/frog/greenwashing-frog-cutout.png" crossorigin="anonymous" />
+      </a-assets>
+
+      <a-entity id="target-curto" mindar-image-target="targetIndex: 0">
+        <a-video src="#video-curto" width="1.35" height="0.76" position="0 0 0"></a-video>
+      </a-entity>
+      <a-entity id="target-longo" mindar-image-target="targetIndex: 1">
+        <a-video src="#video-longo" width="1.35" height="0.76" position="0 0 0"></a-video>
+      </a-entity>
+
+      <a-entity id="target-audio" mindar-image-target="targetIndex: 2" visible="false">
+        <a-image src="#frog-img" width="0.55" height="0.55" position="0 0.3 0" transparent="true"
+          animation="property: position; to: 0 0.42 0; dur: 1400; dir: alternate; loop: true; easing: easeInOutSine"></a-image>
+      </a-entity>
+
+      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+    </a-scene>
+
+    <p class="visually-hidden" id="raStatus" role="status" aria-live="polite">Iniciando a câmera.</p>
+    <script src="js/ra.js?v=4"></script>
+  </body>
+</html>
