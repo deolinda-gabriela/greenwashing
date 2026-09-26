@@ -22,23 +22,6 @@ a-scene .a-canvas {
   background: transparent;
 }
 
-.ra-status {
-  position: fixed;
-  z-index: 2;
-  left: 50%;
-  bottom: calc(14px + env(safe-area-inset-bottom));
-  transform: translateX(-50%);
-  max-width: calc(100vw - 32px);
-  margin: 0;
-  padding: 8px 14px;
-  border-radius: 999px;
-  background: rgba(21, 35, 24, .82);
-  color: #edf2e9;
-  font: 500 13px/1.4 system-ui, sans-serif;
-  text-align: center;
-  pointer-events: none;
-}
-
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; }
 }
